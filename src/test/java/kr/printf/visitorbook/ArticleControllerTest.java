@@ -22,7 +22,10 @@ public class ArticleControllerTest {
     private ArticleService articleService;
 
     @Test
-    public void test_1_insert_ok() {
-        Assert.assertTrue(true);
+    public void test_1_list_all() throws Exception {
+        List<Article> result = articleService.selectArticleList(null);
+        Assert.assertEquals(1, result.size());
     }
+
+
 }
