@@ -1,5 +1,6 @@
 package kr.printf.visitorbook.dao;
 
+import kr.printf.visitorbook.dto.Article;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.Map;
  */
 @Repository("articleDAO")
 public class ArticleDAO extends AbstractDAO{
-    public List<Map<String,Object>> selectArticleList(Map<String, Object> map) {
-        return (List<Map<String,Object>>)selectList("article.selectArticleList", map);
+    public List<Article> selectArticleList(Map<String, Object> map) {
+        return (List<Article>)selectList("article.selectArticleList", map);
     }
 }

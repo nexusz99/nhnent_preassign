@@ -1,5 +1,6 @@
 package kr.printf.visitorbook.controllers;
 
+import kr.printf.visitorbook.dto.Article;
 import kr.printf.visitorbook.service.ArticleService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,9 +23,9 @@ public class article {
     private ArticleService articleService;
 
     @RequestMapping(value="/articles",method= RequestMethod.GET)
-    public @ResponseBody ResponseEntity<List<Map<String, Object>>> listArticle() throws Exception {
-        List<Map<String, Object>> maps = articleService.selectArticleList(null);
-        return new ResponseEntity<List<Map<String, Object>>>(maps, HttpStatus.OK);
+    public @ResponseBody ResponseEntity<List<Article>> listArticle() throws Exception {
+        List<Article> maps = articleService.selectArticleList(null);
+        return new ResponseEntity<List<Article>>(maps, HttpStatus.OK);
     }
 
 }

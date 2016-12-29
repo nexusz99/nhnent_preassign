@@ -1,6 +1,7 @@
 package kr.printf.visitorbook.service;
 
 import kr.printf.visitorbook.dao.ArticleDAO;
+import kr.printf.visitorbook.dto.Article;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,7 +17,7 @@ public class ArticleServiceImpl implements ArticleService{
     @Resource(name="articleDAO")
     private ArticleDAO articleDAO;
 
-    public List<Map<String, Object>> selectArticleList(Map<String, Object> map) throws Exception {
+    public List<Article> selectArticleList(Map<String, Object> map) throws Exception {
         return articleDAO.selectArticleList(map);
     }
 }
