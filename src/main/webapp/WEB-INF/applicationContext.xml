@@ -6,7 +6,7 @@
 
     <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://127.0.0.1:33306/nhnent_preassign"/>
+        <property name="url" value="jdbc:mysql://127.0.0.1:33306/nhnent_preassign?characterEncoding=utf8"/>
         <property name="username" value="ppiyakk2"/>
         <property name="password" value=""/>
     </bean>
