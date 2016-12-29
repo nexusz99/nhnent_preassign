@@ -4,7 +4,7 @@
 <mapper namespace="kr.printf.visitorbook.dao.ArticleDAO">
 
     <select id="selectArticleList" parameterType="kr.printf.visitorbook.dto.Article" resultType="kr.printf.visitorbook.dto.Article">
-        <![CDATA[select idx, content, created_at from visitorbook order by created_at desc]]>
+        <![CDATA[select idx, content, created_at from nhnent_preassign.visitorbook order by created_at desc]]>
     </select>
 
 </mapper>

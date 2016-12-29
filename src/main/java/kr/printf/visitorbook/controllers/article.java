@@ -2,6 +2,7 @@ package kr.printf.visitorbook.controllers;
 
 import kr.printf.visitorbook.dto.Article;
 import kr.printf.visitorbook.service.ArticleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,7 @@ import java.util.Map;
 @Controller
 public class article {
 
-    @Resource(name="articleService")
+    @Autowired
     private ArticleService articleService;
 
     @RequestMapping(value="/articles",method= RequestMethod.GET)

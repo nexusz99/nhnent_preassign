@@ -12,6 +12,6 @@ import java.util.Map;
 @Repository("articleDAO")
 public class ArticleDAO extends AbstractDAO{
     public List<Article> selectArticleList(Map<String, Object> map) {
-        return (List<Article>)selectList("article.selectArticleList", map);
+        return (List<Article>)selectList("kr.printf.visitorbook.dao.ArticleDAO.selectArticleList", map);
     }
 }
