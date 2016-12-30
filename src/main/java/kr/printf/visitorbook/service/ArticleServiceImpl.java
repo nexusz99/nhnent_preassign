@@ -27,4 +27,8 @@ public class ArticleServiceImpl implements ArticleService{
     public List<Article> selectArticleList(Map<String, Object> map) throws Exception {
         return articleDAO.selectArticleList(map);
     }
+
+    public Article selectArticle(int idx) {
+        return (Article) articleDAO.selectOne("kr.printf.visitorbook.dao.ArticleDAO.selectArticle", idx);
+    }
 }

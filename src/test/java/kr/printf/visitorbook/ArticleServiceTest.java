@@ -16,7 +16,7 @@ import java.util.List;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"classpath:applicationContext.xml"})
-public class ArticleControllerTest {
+public class ArticleServiceTest {
 
     @Autowired
     private ArticleService articleService;
@@ -27,5 +27,16 @@ public class ArticleControllerTest {
         Assert.assertEquals(1, result.size());
     }
 
+    @Test
+    public void test_2_get_article_by_idx() {
+        Article article = articleService.selectArticle(1);
+        Assert.assertEquals("test", article.getContent());
+    }
+
+    @Test
+    public void test_3_get_article_by_wrong_idx() {
+        Article article = articleService.selectArticle(100);
+        Assert.assertNull(article);
+    }
 
 }
