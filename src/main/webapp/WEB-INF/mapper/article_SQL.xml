@@ -11,8 +11,15 @@
         <![CDATA[select idx, content, email, created_at, modified_at from visitorbook where idx=#{idx}]]>
     </select>
 
+    <select id="internalselectArticle" parameterType="int" resultType="kr.printf.visitorbook.dto.Article">
+        <![CDATA[select passwd from visitorbook where idx=#{idx}]]>
+    </select>
+
     <insert id="insertArticle" parameterType="kr.printf.visitorbook.dto.Article" useGeneratedKeys="true" keyProperty="idx">
         <![CDATA[insert into visitorbook (content, email, passwd) values (#{content}, #{email}, #{passwd})]]>
     </insert>
 
+    <update id="updateArticle" parameterType="kr.printf.visitorbook.dto.Article" flushCache="true">
+        <![CDATA[update visitorbook set content=#{content}, modified_at=now() where idx=#{idx}]]>
+    </update>
 </mapper>

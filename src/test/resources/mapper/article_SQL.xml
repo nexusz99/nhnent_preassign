@@ -7,6 +7,10 @@
         <![CDATA[select idx, content, created_at from nhnent_preassign.visitorbook order by created_at desc]]>
     </select>
 
+    <select id="internalselectArticle" parameterType="int" resultType="kr.printf.visitorbook.dto.Article">
+        <![CDATA[select passwd from nhnent_preassign.visitorbook where idx=#{idx}]]>
+    </select>
+
     <select id="selectArticle" parameterType="int" resultType="kr.printf.visitorbook.dto.Article">
         <![CDATA[select content, email, created_at, modified_at from nhnent_preassign.visitorbook where idx=#{idx}]]>
     </select>
@@ -14,5 +18,9 @@
     <insert id="insertArticle" parameterType="kr.printf.visitorbook.dto.Article" useGeneratedKeys="true" keyProperty="idx">
         <![CDATA[insert into nhnent_preassign.visitorbook (content, email, passwd) values (#{content}, #{email}, #{passwd})]]>
     </insert>
+
+    <update id="updateArticle" parameterType="kr.printf.visitorbook.dto.Article">
+        <![CDATA[update nhnent_preassign.visitorbook set content=#{content}, modified_at=now() where idx=#{idx}]]>
+    </update>
 
 </mapper>

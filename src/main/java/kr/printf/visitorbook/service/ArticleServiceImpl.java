@@ -1,5 +1,6 @@
 package kr.printf.visitorbook.service;
 
+import kr.printf.visitorbook.common.Tool;
 import kr.printf.visitorbook.dao.ArticleDAO;
 import kr.printf.visitorbook.dto.Article;
 import org.springframework.context.annotation.Bean;
@@ -35,5 +36,19 @@ public class ArticleServiceImpl implements ArticleService{
     public int insertArticle(Article article) {
         int articleIdx = (Integer)articleDAO.insert("kr.printf.visitorbook.dao.ArticleDAO.insertArticle", article);
         return articleIdx;
+    }
+
+    public int updateArticle(Article article) {
+        Article existed_article = (Article)articleDAO.selectOne("kr.printf.visitorbook.dao.ArticleDAO.internalselectArticle", article.getIdx());
+
+        if(existed_article == null)
+            return this.ARTICLE_NOT_FOUND;
+
+        String hashed_passwd = Tool.generate_password_hash(article.getPasswd());
+        if(hashed_passwd.compareTo(existed_article.getPasswd()) != 0)
+            return this.WRONG_PASSWORD;
+
+        articleDAO.update("kr.printf.visitorbook.dao.ArticleDAO.updateArticle", article);
+        return 0;
     }
 }

@@ -51,4 +51,18 @@ public class ArticleServiceTest {
         Assert.assertThat("article_idx", article.getIdx(), greaterThan(1));
     }
 
+    @Test
+    public void test_5_update_article() {
+        Article article = new Article();
+        article.setIdx(2);
+        article.setPasswd("qwerasdf");
+        article.setContent("updated!!");
+        articleService.updateArticle(article);
+
+        Article updated = articleService.selectArticle(2);
+        Assert.assertNull(null);
+        //Assert.assertEquals("updated!!", updated.getContent());
+        //Assert.assertThat("modified_updated", updated.getModified_at(), greaterThan(updated.getCreated_at()));
+    }
+
 }

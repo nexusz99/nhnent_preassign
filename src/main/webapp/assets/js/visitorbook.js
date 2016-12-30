@@ -75,5 +75,33 @@ function write_article() {
             }
         }
     });
+}
+
+function rewrite_article() {
+    var article_idx = $("#read_article_id").val();
+    var content = $("#read_article_content").val();
+    var passwd = $("#read_article_passwd").val();
+
+    var req_body = {'content': content, 'passwd': passwd};
+
+    $.ajax({
+        type: "POST",
+        data: JSON.stringify(req_body),
+        contentType: 'application/json',
+        url: '/articles/'+article_idx,
+        success: function (msg) {
+            $("#read_article_modal").modal('hide');
+            load_article_list();
+        },
+        statusCode: {
+            400: function(data) {
+                alert(data);
+            },
+            401: function(data) {
+                alert("비밀번호가 틀립니다.");
+            }
+        }
+    });
+
 
 }

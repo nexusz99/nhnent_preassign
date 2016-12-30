@@ -41,6 +41,42 @@ public class article {
         return new ResponseEntity<Article>(article, HttpStatus.OK);
     }
 
+    @RequestMapping(value="/articles/{article_id}", method=RequestMethod.POST)
+    public @ResponseBody ResponseEntity<String> updateArticle(@PathVariable("article_id") int article_id, @RequestBody String body) {
+        ResponseEntity<String> response = null;
+
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode node = null;
+        try {
+            node = mapper.readTree(body);
+        } catch (IOException e) {
+            return new ResponseEntity<String>("Wrong Request", HttpStatus.BAD_REQUEST);
+        }
+
+        int idx = article_id;
+        String content = node.get("content").asText();
+        String passwd = node.get("passwd").asText();
+
+        Article article = new Article();
+        article.setIdx(idx);
+        article.setContent(content);
+        article.setPasswd(passwd);
+        int result = articleService.updateArticle(article);
+
+        switch(result) {
+            case ArticleService.ARTICLE_NOT_FOUND:
+                response = new ResponseEntity<String>("Article not found", HttpStatus.NOT_FOUND);
+                break;
+            case ArticleService.WRONG_PASSWORD:
+                response = new ResponseEntity<String>("Wrong Password", HttpStatus.UNAUTHORIZED);
+            case 0:
+                response = new ResponseEntity<String>("ok", HttpStatus.OK);
+                break;
+        }
+        return response;
+
+    }
+
     @RequestMapping(value="/articles", method=RequestMethod.POST)
     public @ResponseBody ResponseEntity<String> insertArticle(@RequestBody String body) {
         ObjectMapper mapper = new ObjectMapper();
