@@ -11,7 +11,7 @@
         <![CDATA[select content, email, created_at, modified_at from nhnent_preassign.visitorbook where idx=#{idx}]]>
     </select>
 
-    <insert id="insertArticle" parameterType="kr.printf.visitorbook.dto.Article">
+    <insert id="insertArticle" parameterType="kr.printf.visitorbook.dto.Article" useGeneratedKeys="true" keyProperty="idx">
         <![CDATA[insert into nhnent_preassign.visitorbook (content, email, passwd) values (#{content}, #{email}, #{passwd})]]>
     </insert>
 

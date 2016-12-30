@@ -31,4 +31,9 @@ public class ArticleServiceImpl implements ArticleService{
     public Article selectArticle(int idx) {
         return (Article) articleDAO.selectOne("kr.printf.visitorbook.dao.ArticleDAO.selectArticle", idx);
     }
+
+    public int insertArticle(Article article) {
+        int articleIdx = (Integer)articleDAO.insert("kr.printf.visitorbook.dao.ArticleDAO.insertArticle", article);
+        return articleIdx;
+    }
 }

@@ -11,6 +11,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
+import static org.hamcrest.Matchers.greaterThan;
+
 /**
  * Created by nexusz99 on 30/12/2016.
  */
@@ -37,6 +39,16 @@ public class ArticleServiceTest {
     public void test_3_get_article_by_wrong_idx() {
         Article article = articleService.selectArticle(100);
         Assert.assertNull(article);
+    }
+
+    @Test
+    public void test_4_insert_new_article() {
+        Article article = new Article();
+        article.setContent("new article");
+        article.setEmail("asdf@asdf.com");
+        article.setPasswd("fd3d77c95765afbf235c65fbab99ef54a43a8942c416cd55042a928e841012ba");
+        articleService.insertArticle(article);
+        Assert.assertThat("article_idx", article.getIdx(), greaterThan(1));
     }
 
 }

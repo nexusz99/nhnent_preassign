@@ -11,4 +11,5 @@ import java.util.Map;
 public interface ArticleService {
     List<Article> selectArticleList(Map<String, Object> map) throws Exception;
     Article selectArticle(int idx);
+    int insertArticle(Article article);
 }

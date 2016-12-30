@@ -49,11 +49,11 @@
                             <input type="text" class="form-control" placeholder="이메일" id="write_article_email"/>
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="비밀번호" id="write_article_password"/>
+                            <input type="password" class="form-control" placeholder="비밀번호" id="write_article_passwd"/>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal" onclick="upload_article()">작성하기</button>
+                        <button type="button" class="btn btn-success" onclick="write_article()">작성하기</button>
                     </div>
                 </div>
             </div>

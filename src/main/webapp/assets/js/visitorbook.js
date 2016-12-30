@@ -38,6 +38,42 @@ function load_article(idx) {
 }
 
 
-function write_araticle() {
+function ValidateEmail(mail)
+{
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+    {
+        return (true)
+    }
+    return (false)
+}
+
+function write_article() {
+    var content = $("#write_article_content").val();
+    var email = $("#write_article_email").val();
+    var passwd = $("#write_article_passwd").val();
+
+    if(!ValidateEmail(email)) {
+        alert("이메일 형식이 올바르지 않습니다.");
+    }
+    var req_body = {'content': content, 'email': email, 'passwd': passwd};
+
+    $.ajax({
+        type: "POST",
+        data: JSON.stringify(req_body),
+        contentType: 'application/json',
+        url: '/articles',
+        success: function (msg) {
+            $("#write_article_modal").modal('hide');
+            $("#write_article_content").val('');
+            $("#write_article_email").val('');
+            $("#write_article_passwd").val('');
+            load_article_list();
+        },
+        statusCode: {
+            400: function(data) {
+                alert(data);
+            }
+        }
+    });
 
 }
