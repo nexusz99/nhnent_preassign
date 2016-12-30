@@ -8,10 +8,10 @@
     </select>
 
     <select id="selectArticle" parameterType="int" resultType="kr.printf.visitorbook.dto.Article">
-        <![CDATA[select content, email, created_at, modified_at from visitorbook where idx=#{idx}]]>
+        <![CDATA[select idx, content, email, created_at, modified_at from visitorbook where idx=#{idx}]]>
     </select>
 
-    <insert id="insertArticle" parameterType="kr.printf.visitorbook.dto.Article">
+    <insert id="insertArticle" parameterType="kr.printf.visitorbook.dto.Article" useGeneratedKeys="true" keyProperty="idx">
         <![CDATA[insert into visitorbook (content, email, passwd) values (#{content}, #{email}, #{passwd})]]>
     </insert>
 
