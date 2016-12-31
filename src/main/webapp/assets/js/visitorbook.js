@@ -54,6 +54,7 @@ function write_article() {
 
     if(!ValidateEmail(email)) {
         alert("이메일 형식이 올바르지 않습니다.");
+        return;
     }
     var req_body = {'content': content, 'email': email, 'passwd': passwd};
 
