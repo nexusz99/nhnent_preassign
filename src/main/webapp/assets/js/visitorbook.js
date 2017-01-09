@@ -82,6 +82,8 @@ function rewrite_article() {
     var article_idx = $("#read_article_id").val();
     var content = $("#read_article_content").val();
     var passwd = $("#read_article_passwd").val();
+    
+    $("#read_article_passwd").val('');
 
     var req_body = {'content': content, 'passwd': passwd};
 

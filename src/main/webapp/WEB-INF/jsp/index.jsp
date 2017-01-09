@@ -94,7 +94,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal" onclick="rewrite_article()">수정하기</button>
+                        <button type="button" class="btn btn-success" onclick="rewrite_article()">수정하기</button>
                     </div>
                 </div>
             </div>
