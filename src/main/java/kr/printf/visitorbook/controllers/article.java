@@ -69,6 +69,7 @@ public class article {
                 break;
             case ArticleService.WRONG_PASSWORD:
                 response = new ResponseEntity<String>("Wrong Password", HttpStatus.UNAUTHORIZED);
+                break;
             case 0:
                 response = new ResponseEntity<String>("ok", HttpStatus.OK);
                 break;
