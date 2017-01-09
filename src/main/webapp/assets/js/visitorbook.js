@@ -5,7 +5,7 @@ $(function() {
 function load_article_list() {
     $.ajax({
         type: "GET",
-        url: "/articles",
+        url: "/visitorbook/articles",
         success: function(data) {
             var content = "<tr><td>글 번호</td><td>내용</td><td>작성 시간</td></tr>"
             for(var a = 0; a < data.length; a++) {
@@ -13,7 +13,7 @@ function load_article_list() {
                 var article = data[a];
                 d += "<td>"+article.idx+"</td>";
                 d += "<td data-toggle='modal' data-target='#read_article_modal' onclick='load_article("+article.idx+")'><a href='#'>"+article.content+"</a></td>";
-                d += "<td>"+new Date(article.created_at)+"</td>";
+                d += "<td>"+new Date(article.created_at).toLocaleString()+"</td>";
                 d += "</tr>";
                 content += d;
             }
@@ -26,13 +26,13 @@ function load_article_list() {
 function load_article(idx) {
     $.ajax({
         type: "GET",
-        url: "/articles/"+idx,
+        url: "/visitorbook/articles/"+idx,
         success: function(data) {
             $("#read_article_id").val(data['idx']);
             $("#read_article_content").val(data['content']);
             $("#read_article_email").val(data['email']);
-            $("#read_article_created").val(new Date(data['created_at']));
-            $("#read_article_modified").val(new Date(data['modified_at']));
+            $("#read_article_created").val(new Date(data['created_at']).toLocaleString());
+            $("#read_article_modified").val(new Date(data['modified_at']).toLocaleString());
         }
     });
 }
@@ -62,7 +62,7 @@ function write_article() {
         type: "POST",
         data: JSON.stringify(req_body),
         contentType: 'application/json',
-        url: '/articles',
+        url: '/visitorbook/articles',
         success: function (msg) {
             $("#write_article_modal").modal('hide');
             $("#write_article_content").val('');
@@ -89,7 +89,7 @@ function rewrite_article() {
         type: "POST",
         data: JSON.stringify(req_body),
         contentType: 'application/json',
-        url: '/articles/'+article_idx,
+        url: '/visitorbook/articles/'+article_idx,
         success: function (msg) {
             $("#read_article_modal").modal('hide');
             load_article_list();

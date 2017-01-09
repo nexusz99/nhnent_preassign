@@ -7,13 +7,13 @@
     <div class="container">
         <div class="header clearfix">
             <a href="#" class="navbar-left">
-                <img width="50px" height="50px" style="margin-right:5px;" src="/static/images/chick.png">
+                <img width="50px" height="50px" style="margin-right:5px;" src="static/images/chick.png">
             </a>
             <h3 class="text-muted"> 유치원 방명록 </h3>
 
             <div class='btn-toolbar pull-right'>
                 <div class='btn-group'>
-                    <button type='button' class='btn btn-default' data-toggle="modal" data-target="#write_article_modal" onclick="get_autoscale_setting()">방명록 작성</button>
+                    <button type='button' class='btn btn-default' data-toggle="modal" data-target="#write_article_modal">방명록 작성</button>
                 </div>
             </div>
 
